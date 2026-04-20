@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Jeu — Taquin</title>
+  <link rel="stylesheet" th:href="@{/resources/css/style.css}">
+</head>
+<body class="game-page">
+
+  <nav class="navbar">
+    <a th:href="@{/home}" class="nav-brand">🔢 Taquin</a>
+    <div class="nav-links">
+      <span th:text="${username}"></span>
+      <a th:href="@{/leaderboard}">🏆 Classement</a>
+      <a th:href="@{/logout}">Déconnexion</a>
+    </div>
+  </nav>
+
+  <!-- Écran victoire -->
+  <div th:if="${won}" class="win-overlay">
+    <div class="win-box">
+      <div class="win-emoji">🎉</div>
+      <h2>Bravo !</h2>
+      <p>Niveau <strong th:text="${level}"></strong> terminé en
+         <strong th:text="${moves}"></strong> coups</p>
+      <p class="win-score">Score : <span th:text="${score}"></span> pts</p>
+      <a th:href="@{/home}" class="btn btn-primary">Menu principal</a>
+      <a th:href="@{/leaderboard}" class="btn btn-secondary">Classement</a>
+     <form th:action="@{/game/next}" method="post">
+  <button type="submit" class="btn btn-primary">
+    Niveau suivant →
+  </button>
+</form>
+
+    </div>
+  </div>
+
+  <main class="game-main">
+
+    <!-- HUD -->
+    <div class="hud">
+      <div class="hud-item">
+        <span class="hud-label">Niveau</span>
+        <span class="hud-value" th:text="${level}"></span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">Coups</span>
+        <span class="hud-value" th:text="${moves}"></span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">Score</span>
+        <span class="hud-value" th:text="${score}"></span>
+      </div>
+    </div>
+
+    <!-- Plateau -->
+    <div class="board-wrapper">
+      <div class="board"
+           th:style="'grid-template-columns: repeat(' + ${size} + ', 1fr);'"
+           th:attr="data-size=${size}">
+
+        <th:block th:each="tile, stat : ${board}">
+          <form th:if="${tile != 0}" method="post" th:action="@{/game/move}">
+            <input type="hidden" name="index" th:value="${stat.index}">
+            <button type="submit" class="tile" th:text="${tile}"></button>
+          </form>
+          <div th:if="${tile == 0}" class="tile tile-empty"></div>
+        </th:block>
+
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="game-actions">
+      
+     
+      <a th:href="@{/game/new(level=${level})}" class="btn btn-outline">🔄 Recommencer</a>
+      <a th:href="@{/home}" class="btn btn-outline">🏠 Accueil</a>
+    </div>
+
+  
+
+  </main>
+
+  <script th:src="@{/resources/js/game.js}"></script>
+</body>
+</html>

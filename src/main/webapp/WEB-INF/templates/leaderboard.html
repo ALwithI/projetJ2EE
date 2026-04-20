@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Classement — Taquin</title>
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}" />
+  </head>
+  <body class="leaderboard-page">
+    <nav class="navbar">
+      <a th:href="@{/home}" class="nav-brand">🔢 Taquin</a>
+      <div class="nav-links">
+        <a th:href="@{/home}">Accueil</a>
+        <a th:href="@{/logout}">Déconnexion</a>
+      </div>
+    </nav>
+
+    <main class="lb-main">
+      <h1>🏆 Classement</h1>
+
+      <table class="lb-table">
+        <thead>
+          <tr>
+            <th>Rang</th>
+            <th>Joueur</th>
+            <th>Meilleur score</th>
+            <th>Parties jouées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            th:each="p, s : ${players}"
+            th:classappend="${s.index==0?' rank-gold':s.index==1?' rank-silver':s.index==2?' rank-bronze':''}"
+          >
+            <td
+              th:text="${s.index==0?'🥇':s.index==1?'🥈':s.index==2?'🥉':s.count}"
+            ></td>
+            <td th:text="${p.username}"></td>
+            <td th:text="${p.bestScore}"></td>
+            <td th:text="${p.totalGames}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

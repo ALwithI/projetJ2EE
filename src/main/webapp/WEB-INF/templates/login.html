@@ -1,0 +1,35 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Connexion — Taquin</title>
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">🔢</div>
+      <h1>Taquin</h1>
+      <h2>Connexion</h2>
+
+      <div th:if="${param.registered}" class="alert alert-success">
+        Compte créé avec succès ! Connecte-toi.
+      </div>
+      <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+
+      <form method="post" th:action="@{/login}">
+        <div class="field">
+          <label>Nom d'utilisateur</label>
+          <input type="text" name="username" required autofocus />
+        </div>
+        <div class="field">
+          <label>Mot de passe</label>
+          <input type="password" name="password" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Se connecter</button>
+      </form>
+      <p class="auth-link">
+        Pas encore de compte ? <a th:href="@{/register}">S'inscrire</a>
+      </p>
+    </div>
+  </body>
+</html>

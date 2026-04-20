@@ -1,0 +1,32 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inscription — Taquin</title>
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">🔢</div>
+      <h1>Taquin</h1>
+      <h2>Inscription</h2>
+
+      <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+
+      <form method="post" th:action="@{/register}">
+        <div class="field">
+          <label>Nom d'utilisateur</label>
+          <input type="text" name="username" required autofocus />
+        </div>
+        <div class="field">
+          <label>Mot de passe (min. 4 caractères)</label>
+          <input type="password" name="password" required minlength="4" />
+        </div>
+        <button type="submit" class="btn btn-primary">Créer mon compte</button>
+      </form>
+      <p class="auth-link">
+        Déjà un compte ? <a th:href="@{/login}">Se connecter</a>
+      </p>
+    </div>
+  </body>
+</html>

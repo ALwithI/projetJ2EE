@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Accueil — Taquin</title>
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a class="nav-brand" th:href="@{/home}">🔢 Taquin</a>
+      <div class="nav-links">
+        <span th:text="${username}"></span>
+        <a th:href="@{/leaderboard}">Classement</a>
+        <a th:href="@{/logout}" class="btn btn-outline">Déconnexion</a>
+      </div>
+    </nav>
+
+    <main class="home-main">
+      <h1>Choisissez un niveau</h1>
+      <div class="level-cards">
+        <div class="level-card">
+          <h3>Niveau 1</h3>
+          <p class="level-sub">3×3</p>
+          <p class="level-desc">Parfait pour débuter</p>
+          <a th:href="@{/game/new(level=${1})}" class="btn btn-primary"
+            >Jouer</a
+          >
+        </div>
+
+        <div class="level-card">
+          <h3>Niveau 2</h3>
+          <p class="level-sub">4×4</p>
+          <p class="level-desc">Un peu plus difficile</p>
+          <a th:href="@{/game/new(level=${2})}" class="btn btn-primary"
+            >Jouer</a
+          >
+        </div>
+
+        <div class="level-card">
+          <h3>Niveau 3</h3>
+          <p class="level-sub">5×5</p>
+          <p class="level-desc">Pour les experts</p>
+          <a th:href="@{/game/new(level=${3})}" class="btn btn-primary"
+            >Jouer</a
+          >
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

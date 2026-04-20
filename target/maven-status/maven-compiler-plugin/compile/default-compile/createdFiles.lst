@@ -1,0 +1,12 @@
+com\taquin\model\Player.class
+com\taquin\repository\PlayerRepository.class
+com\taquin\model\SavedGame.class
+com\taquin\controller\AuthController.class
+com\taquin\repository\SavedGameRepository.class
+com\taquin\config\DatabaseConfig.class
+com\taquin\controller\GameController.class
+com\taquin\service\GameService.class
+com\taquin\config\AppConfig.class
+com\taquin\config\WebMvcConfig.class
+com\taquin\controller\HomeController.class
+com\taquin\service\PlayerService.class
