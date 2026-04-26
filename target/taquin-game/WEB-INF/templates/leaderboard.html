@@ -9,8 +9,13 @@
     <nav class="navbar">
       <a th:href="@{/home}" class="nav-brand">🔢 Taquin</a>
       <div class="nav-links">
-        <a th:href="@{/home}">Accueil</a>
-        <a th:href="@{/logout}">Déconnexion</a>
+        <a th:href="@{/home}">🏠 Accueil</a>
+        <a
+          th:href="@{/logout}"
+          class="btn btn-outline"
+          style="padding: 0.5rem 1.2rem; font-size: 0.85rem"
+          >Déconnexion</a
+        >
       </div>
     </nav>
 

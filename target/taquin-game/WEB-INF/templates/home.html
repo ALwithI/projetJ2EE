@@ -7,7 +7,7 @@
   </head>
   <body>
     <nav class="navbar">
-      <a class="nav-brand" th:href="@{/home}">🔢 Taquin</a>
+      <a class="nav-brand" th:href="@{/home}">Taquin</a>
       <div class="nav-links">
         <span th:text="${username}"></span>
         <a th:href="@{/leaderboard}">Classement</a>
@@ -16,6 +16,33 @@
     </nav>
 
     <main class="home-main">
+      <!-- ═══ HERO : image gauche / texte droite ═══ -->
+      <div class="hero-section">
+        <!-- IMAGE À GAUCHE -->
+        <div class="hero-image">
+          <img
+            th:src="@{/resources/images/puzzle.png}"
+            src="/resources/images/puzzle.png"
+            alt="Slide Puzzle"
+            class="puzzle-img"
+          />
+        </div>
+
+        <!-- TEXTE À DROITE -->
+        <div class="hero-content">
+          <h1>Bienvenue sur Taquin !</h1>
+          <p class="hero-subtitle">Le jeu de taquin en ligne</p>
+          <p class="hero-description">
+            Glissez les tuiles, résolvez le puzzle et battez vos records.
+            Choisissez votre niveau ci-dessous et commencez à jouer !
+          </p>
+          <a th:href="@{/game/new(level=1)}" class="btn btn-primary"
+            >🎮 Jouer maintenant</a
+          >
+        </div>
+      </div>
+
+      <!-- ═══ NIVEAUX (inchangé) ═══ -->
       <h1>Choisissez un niveau</h1>
       <div class="level-cards">
         <div class="level-card">

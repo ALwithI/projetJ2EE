@@ -9,26 +9,27 @@
     <div class="auth-card">
       <div class="auth-logo">🔢</div>
       <h1>Taquin</h1>
-      <h2>Connexion</h2>
+      <h2>Bienvenue ! Connectez-vous</h2>
 
       <div th:if="${param.registered}" class="alert alert-success">
-        Compte créé avec succès ! Connecte-toi.
+        ✓ Compte créé avec succès ! Connecte-toi pour commencer.
       </div>
       <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
 
       <form method="post" th:action="@{/login}">
         <div class="field">
-          <label>Nom d'utilisateur</label>
+          <label>🧑‍💻 Nom d'utilisateur</label>
           <input type="text" name="username" required autofocus />
         </div>
         <div class="field">
-          <label>Mot de passe</label>
+          <label>🔐 Mot de passe</label>
           <input type="password" name="password" required />
         </div>
         <button type="submit" class="btn btn-primary">Se connecter</button>
       </form>
       <p class="auth-link">
-        Pas encore de compte ? <a th:href="@{/register}">S'inscrire</a>
+        Pas encore de compte ?
+        <a th:href="@{/register}">S'inscrire maintenant</a>
       </p>
     </div>
   </body>
